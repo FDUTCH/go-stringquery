@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"go-stringquery/query"
+
+	"github.com/FDUTCH/go-stringquery/query"
 )
 
 func main() {
