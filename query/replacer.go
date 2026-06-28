@@ -14,6 +14,7 @@ type Replacer[T any] struct {
 	queries map[string]Func[T]
 }
 
+// grow grows builder if necessary.
 func (r *Replacer[T]) grow(size int) {
 	toAlloc := size - (r.builder.Cap() - r.builder.Len())
 	if toAlloc > 0 {
@@ -39,7 +40,7 @@ func (r *Replacer[T]) Write(p []byte) (n int, err error) {
 	return len(p), nil
 }
 
-// WriteRune writes rune...
+// WriteRune writes rune.
 func (r *Replacer[T]) WriteRune(char rune) {
 	switch r.state {
 	case stateInit:
@@ -51,7 +52,7 @@ func (r *Replacer[T]) WriteRune(char rune) {
 	}
 }
 
-// SetSource sets data source and queries...
+// SetSource sets data source and queries fields.
 func (r *Replacer[T]) SetSource(source T, queries map[string]Func[T]) {
 	r.source = source
 	r.queries = queries
